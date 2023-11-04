@@ -55,7 +55,6 @@ export default function CreateForm() {
         value={body}
         />
         <button type="submit">Create Blog</button>
-    </form>
-    
+    </form>    
   )
 }
