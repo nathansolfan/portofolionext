@@ -1,6 +1,6 @@
 // app/dashboard/tickets/create/page.jsx
 import React from 'react';
-import AboutMe from './about';
+import Weather from './weather';
 
 
 
