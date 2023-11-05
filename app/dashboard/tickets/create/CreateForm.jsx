@@ -44,7 +44,7 @@ export default function CreateForm() {
         type='text'
         // Remember onChange={} fires an arrow function
         // Access to event, and .target.value to get its value
-        onChange={(e)=> setTitle(e.target.value)}
+        onChange={(e) => setTitle(e.target.value)}
         value={title}
         />
         <label>Body:</label>
