@@ -1,37 +1,70 @@
 "use client"
-// Import the necessary dependencies
-import React, { useState, useEffect } from 'react';
-import { useClient } from 'next/data-client';
+import React, { useState } from 'react';
 
-const Weather = ({ lat, lon, apiKey }) => {
-  // Use useClient hook to enable client-side rendering
-  const { useClient: client } = useClient();
-  
-  // State and API URL remain the same
-  const [weatherData, setWeatherData] = useState(null);
-  const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+export default function Weather() {
+  const [data, setData] = useState({});
+  const [location, setLocation] = useState('');
 
-  // Wrap useEffect in client() to ensure it's only executed on the client side
-  client(() => {
-    useEffect(() => {
-      fetch(API_URL)
-        .then((response) => response.json())
-        .then((data) => setWeatherData(data));
-    }, [API_URL]);
-  });
+  const searchLocation = async (event) => {
+    if (event.key === 'Enter') {
+      try {
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=8922d9269e385fb82a90f182de433573`
+        );
+        if (response.ok) {
+          const responseData = await response.json();
+          setData(responseData);
+          console.log(responseData);
+        } else {
+          // Handle error here
+          console.error('Failed to fetch weather data');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+  };
 
-  // Render weather information
   return (
-    <div>
-      {weatherData && (
-        <div>
-          <h2>Weather at Latitude: {lat}, Longitude: {lon}</h2>
-          <p>Temperature: {weatherData.main.temp}°C</p>
-          <p>Weather: {weatherData.weather[0].description}</p>
+    <div className="App">
+      <div className="search">
+        <input
+          value={location}
+          onChange={(event) => setLocation(event.target.value)}
+          onKeyPress={searchLocation}
+          placeholder="Enter Location"
+          type="text"
+        />
+      </div>
+
+      <div className="container">
+        <div className="top">
+          <div className="location">
+            <p>{data.name}</p>
+          </div>
+          <div className="temp">
+            {data.main ? <h1>{data.main.temp}</h1> : null}
+          </div>
         </div>
-      )}
+
+        <div className="description">
+          {data.weather ? <p>{data.weather[0].main}</p> : null}
+        </div>
+
+        {data.name !== undefined && (
+          <div className="bottom">
+            <div className="feels">
+              {data.main ? <p className="bold">{data.main.feels_like}</p> : null}
+            </div>
+            <div className="humidity">
+              {data.main ? <p>{data.main.humidity}%</p> : null}
+            </div>
+            <div className="wind">
+              {data.wind ? <p>{data.wind.speed} MPH</p> : null}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
-};
-
-export default Weather;
+}
