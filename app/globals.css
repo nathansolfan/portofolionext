@@ -101,3 +101,10 @@ form button {
 .card .pill {
   @apply absolute bottom-0 right-0 rounded-tl-md;
 }
+
+p:hover {
+  /* Define the hover effect styles here */
+  /* For example, changing the text color on hover */
+  color: #ff0000; /* You can change the color to your desired hover effect */
+  /* You can add more styles as needed for your hover effect */
+}
