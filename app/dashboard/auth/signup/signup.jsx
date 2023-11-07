@@ -4,9 +4,15 @@ import React, { useState } from 'react'
 
 // Import useState 
 // Get the handleSubmit() prop and use it on the AuthForm()
-export default function AuthForm( {handleSubmit} ) {
+export default function AuthForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    // Define the handleSubmit function to handle form submission
+  const handleSubmit = (event, email, password) => {
+    event.preventDefault();
+    // Perform form submission logic here, e.g., API call or state update
+    console.log('Form submitted with email:', email, 'and password:', password);
+  };
 
   return (
     // The form itself - label and span - add btn at end
