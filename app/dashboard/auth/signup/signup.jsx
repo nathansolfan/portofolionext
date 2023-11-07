@@ -1,17 +1,37 @@
 // since its not a server component, we have to add this line of code to make it client
 "use client"
+import { createClient } from '@supabase/supabase-js';
 import React, { useState } from 'react'
 
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
+
 // Import useState 
-// Get the handleSubmit() prop and use it on the AuthForm()
 export default function AuthForm() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     // Define the handleSubmit function to handle form submission
-  const handleSubmit = (event, email, password) => {
+  // Define the handleSubmit function to handle form submission
+  const handleSubmit = async (event, email, password) => {
     event.preventDefault();
-    // Perform form submission logic here, e.g., API call or state update
-    console.log('Form submitted with email:', email, 'and password:', password);
+
+    try {
+      // Use Supabase to create a new user
+      const { user, error } = await supabase.auth.signUp({
+        email,
+        password,
+      });
+
+      if (error) {
+        console.error('Error signing up:', error.message);
+      } else {
+        console.log('User signed up successfully:', user);
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
   };
 
   return (
