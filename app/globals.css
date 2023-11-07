@@ -41,7 +41,8 @@ main nav {
 
 /* Button Styles */
 button {
-  @apply px-3 py-2 rounded-sm flex justify-between items-center gap-2 text-sm;
+  @apply py-2 px-7 bg-purple-200 bg-opacity-5 rounded-md block mx-auto min-w-fit w-1/4;
+  /* @apply px-3 py-2 rounded-sm flex justify-between items-center gap-2 text-sm; */
 }
 button:hover {
   @apply bg-opacity-90;
@@ -52,7 +53,6 @@ button:hover {
 .btn-secondary {
   @apply bg-gray-300 text-gray-900;
 }
-
 /* Form Styles */
 form {
   @apply py-4 px-7 bg-purple-600 bg-opacity-5 rounded-md block mx-auto min-w-fit w-1/4;
@@ -102,9 +102,4 @@ form button {
   @apply absolute bottom-0 right-0 rounded-tl-md;
 }
 
-p:hover {
-  /* Define the hover effect styles here */
-  /* For example, changing the text color on hover */
-  color: #ff0000; /* You can change the color to your desired hover effect */
-  /* You can add more styles as needed for your hover effect */
-}
+/* ABOUT ME EFFECTS */
