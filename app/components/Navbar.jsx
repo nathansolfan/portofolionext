@@ -11,7 +11,9 @@ export default function Navbar() {
       <Link href="/dashboard/about">About</Link>
       <Link href="/dashboard/tickets/create">Blog</Link>
       <Link href="/dashboard/blogs">Ticket List</Link>
-      <Link href="/dashboard/weather">Weather</Link>     
+      <Link href="/dashboard/weather">Weather</Link> 
+      <Link href="/dashboard/auth/signup">Weather</Link>     
+    
      
   </nav>
   )
