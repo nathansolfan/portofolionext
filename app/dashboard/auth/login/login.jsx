@@ -19,19 +19,26 @@ export default  function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');  
 
-  const handleSubmit = async (e, email, password) => {
- 
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password
-  })
-  if(error){
-    setError(error.message) 
+ // Login Component
+const handleSubmit = async (e, email, password) => {
+  e.preventDefault();
+
+  try {
+    const { user, session, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      setError(error.message);
+    } else {
+      // Handle successful login here
+      console.log('User signed in successfully:', user);
+    }
+  } catch (error) {
+    console.error('Error:', error.message);
   }
-  if(!error){
-    router.push('/')    
-  }
-  }
+};
 
 
   return (
