@@ -12,7 +12,9 @@ export default function Navbar() {
       <Link href="/dashboard/tickets/create">Blog</Link>
       <Link href="/dashboard/blogs">Ticket List</Link>
       <Link href="/dashboard/weather">Weather</Link> 
-      <Link href="/dashboard/auth/signup">Weather</Link>     
+      <Link href="/dashboard/auth/signup">Signup</Link>   
+      <Link href="/dashboard/auth/login">Login</Link>     
+  
     
      
   </nav>
