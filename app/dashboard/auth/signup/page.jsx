@@ -4,7 +4,7 @@ import AuthComponent from './signup.jsx'; // Adjust the import path as needed
 
 
 
-export default function AboutMeDisplay() {
+export default function Signup() {
   return (
     <>
       <main>
