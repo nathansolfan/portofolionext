@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Navbar() {
+export default function Navbar( {user}) {
   return (
     <nav>
     <div className="logo">
@@ -14,6 +14,9 @@ export default function Navbar() {
       <Link href="/dashboard/weather">Weather</Link> 
       <Link href="/dashboard/auth/signup">Signup</Link>   
       <Link href="/dashboard/auth/login">Login</Link>     
+
+      {user && <span>Hello, {user.email}</span>}
+
   
     
      

@@ -4,19 +4,28 @@ import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar"; // Import Navbar component
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
-const inter = Inter({ subsets: ["latin"] });
+export default async function RootLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
+  const supabase = createServerComponentClient({ cookies });
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+  const { data } = await supabase.auth.getSession();
+
+  if (!data.session) {
+    // when user is in the dashboard, but not logged in, Sends it to /login
+    redirect("/login");
+  }
   return (
-    <html lang="en">
-      <head>
-        {/* You might need to add a <Head> component here for setting the title and meta tags */}
-      </head>
-      <body className={inter.className}>
-        <Navbar /> {/* Include the Navbar here */}
-        {children}
-      </body>
-    </html>
+    <>
+      <Navbar user={data.session.user} /> {/* Include the Navbar here */}
+      {children}
+    </>
   );
 }
+// if no redirect, data.session may have an issue
