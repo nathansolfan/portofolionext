@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import RootLayout from "../layout";
 
 export default function Home() {
   return (
-    <>
+    <RootLayout>
       <main>
         <h2>Portfolio</h2>
         {/* Rest of your page content */}
@@ -14,6 +14,6 @@ export default function Home() {
         </p>
       </main>
       <button>Yeah man</button>
-    </>
+    </RootLayout>
   );
 }

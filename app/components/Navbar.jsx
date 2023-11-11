@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Navbar( {user}) {
+export default function Navbar(user) {
   return (
     <nav>
     <div className="logo">

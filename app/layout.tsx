@@ -19,7 +19,7 @@ export default async function RootLayout({
 
   if (!data.session) {
     // when user is in the dashboard, but not logged in, Sends it to /login
-    redirect("/login");
+    redirect("/");
   }
   return (
     <>
