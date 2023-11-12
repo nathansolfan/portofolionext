@@ -1,6 +1,8 @@
 import Link from "next/link";
 
-export default function Navbar(user) {
+
+export default function Navbar() {
+
   return (
     <nav>
     <div className="logo">
@@ -8,16 +10,15 @@ export default function Navbar(user) {
       <h1>Site Name</h1>
     </div>    
       <Link href="/">Home</Link>
-      <Link href="/dashboard/about">About</Link>
-      <Link href="/dashboard/tickets/create">Blog</Link>
-      <Link href="/dashboard/blogs">Ticket List</Link>
-      <Link href="/dashboard/weather">Weather</Link> 
-      <Link href="/dashboard/auth/signup">Signup</Link>   
-      <Link href="/dashboard/auth/login">Login</Link>     
+      <Link href="/pages/about">About</Link>
+      <Link href="/pages/tickets/create">Blog</Link>
+      <Link href="/pages/blogs">Ticket List</Link>
+      <Link href="/pages/weather">Weather</Link> 
+      <Link href="/pages/auth/signup">Signup</Link>   
+      <Link href="/pages/auth/login">Login</Link>     
 
-      {user && <span>Hello, {user.email}</span>}
+      {/* {user && <span>Hello, {user.email}</span>} */}
 
-  
     
      
   </nav>
