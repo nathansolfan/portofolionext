@@ -23,6 +23,10 @@ const handleSubmit = async (e, email, password) => {
   e.preventDefault()
   setError('')
 
+  
+  console.log("handleSubmit triggered");
+  console.log("Email:", email, "Password:", password);
+
   const supabase = createClientComponentClient()
 
   try {
@@ -31,8 +35,13 @@ const handleSubmit = async (e, email, password) => {
       password,
     });
 
+    console.log("Response from signInWithPassword:", { user, session, error });
+
+
     if (error) {
       setError(error.message);
+      console.log("Login error:", error.message);
+
     } else {
       // Handle successful login here
       console.log('User signed in successfully:', user);
@@ -42,8 +51,6 @@ const handleSubmit = async (e, email, password) => {
     console.error('Error:', error.message);
   }
 };
-
-
   return (
     <form onSubmit={(e) => handleSubmit(e, email, password)}>
       <label>

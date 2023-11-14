@@ -9,8 +9,7 @@ export default function LoginPage() {
   return (
     <main>
         <h2>This is a Login Title</h2>      
-        <LoginForm/>
-          
+        <LoginForm/>          
     </main>
   )
 }

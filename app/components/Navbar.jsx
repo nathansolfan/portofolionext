@@ -14,8 +14,8 @@ export default function Navbar() {
       <Link href="/pages/tickets/create">Blog</Link>
       <Link href="/pages/blogs">Ticket List</Link>
       <Link href="/pages/weather">Weather</Link> 
-      <Link href="/pages/auth/signup">Signup</Link>   
-      <Link href="/pages/auth/login">Login</Link>     
+      <Link href="/signup">Signup</Link>   
+      <Link href="/login">Login</Link>    
 
       {/* {user && <span>Hello, {user.email}</span>} */}
 
